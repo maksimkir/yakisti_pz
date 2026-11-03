@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: ua.course.delivery.ShippingIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 3.242 s <<< FAILURE! -- in ua.course.delivery.ShippingIntegrationTest
+ua.course.delivery.ShippingIntegrationTest.cancel_fromDispatched_intentionallyWrongExpectation_mustStayFailing -- Time elapsed: 0.135 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: НАВМИСНО НЕПРАВИЛЬНЕ очікування (контрольна вимога лаб.№4, розділ 5): справжнє правило повертає 50% при скасуванні зі статусу Dispatched, а не 100%. Тест залишено FAILED навмисно — не виправляти перед захистом. ==> expected: <7000> but was: <3500>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:166)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:664)
+	at ua.course.delivery.ShippingIntegrationTest.cancel_fromDispatched_intentionallyWrongExpectation_mustStayFailing(ShippingIntegrationTest.java:332)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

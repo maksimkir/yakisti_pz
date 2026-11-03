@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ua.course.delivery.EnvironmentTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.175 s -- in ua.course.delivery.EnvironmentTest

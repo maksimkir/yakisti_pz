@@ -1,0 +1,14 @@
+ua\course\delivery\Customer.class
+ua\course\delivery\ShipmentRejectedException.class
+ua\course\delivery\Sql.class
+ua\course\delivery\Parcel.class
+ua\course\delivery\HttpShippingPolicy.class
+ua\course\delivery\ShipmentStatus.class
+ua\course\delivery\Shipment.class
+ua\course\delivery\ParcelRepository.class
+ua\course\delivery\ShippingService.class
+ua\course\delivery\Database.class
+ua\course\delivery\ShipmentRepository.class
+ua\course\delivery\CustomerRepository.class
+ua\course\delivery\ShipmentRequest.class
+ua\course\delivery\ShippingPolicy.class

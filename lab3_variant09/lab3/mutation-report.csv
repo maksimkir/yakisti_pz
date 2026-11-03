@@ -1,0 +1,24 @@
+id,category,description,status_before,failed_tests_before,status_after,failed_tests_after
+M01,Conditionals Boundary,credits >= 30  ->  credits > 30 (рядок 35),KILLED,1,KILLED,1
+M02,Conditionals Boundary,credits >= 30  ->  credits == 30 (рядок 35),KILLED,5,KILLED,5
+M03,Negate Conditionals,!prerequisites.isSatisfied()  ->  prerequisites.isSatisfied() (рядок 38),KILLED,17,KILLED,17
+M04,Conditionals Boundary,seats < 0  ->  seats <= 0 (рядок 42),KILLED,1,KILLED,1
+M05,Conditionals Boundary,"seats < 0  ->  seats > 0 (рядок 42, інвертована межа)",KILLED,14,KILLED,14
+M06,Negate Conditionals,seats == 0  ->  seats != 0 (рядок 45),KILLED,14,KILLED,14
+M07,Conditionals Boundary / Logical,scholarship && early  ->  scholarship || early (рядок 49),KILLED,6,KILLED,6
+M08,Constant Replacement,discount = 20  ->  discount = 21 (рядок 52),KILLED,4,KILLED,4
+M09,Constant Replacement,discount = 10  ->  discount = 11 (рядок 54),KILLED,2,KILLED,2
+M10,Constant Replacement,"discount = 0  ->  discount = 5 (рядок 56, гілка else)",KILLED,2,KILLED,2
+M11,Math Mutator,currentCredits() + courseCredits()  ->  віднімання (рядок 34),KILLED,9,KILLED,9
+M12,Math Mutator,courseCredits() * 50_000L  ->  додавання (рядок 58),KILLED,9,KILLED,9
+M13,Math Mutator,base - base*discount/100  ->  base + base*discount/100 (рядок 59),KILLED,7,KILLED,7
+M14,Math Mutator,"seats - 1  ->  seats + 1 (рядок 59, remainingSeats)",KILLED,3,KILLED,3
+M15,Void Method Call Removal,видалено виклик enrollments.save(...) (рядок 60),KILLED,3,KILLED,3
+M16,Constant Replacement,base * 50_000L  ->  50_001L (рядок 58),KILLED,9,KILLED,9
+M17,Constant Replacement (rejected()),rejected(): credits 0 -> 1 (рядок 65),SURVIVED,0,KILLED,7
+M18,Constant Replacement (rejected()),rejected(): discountPercent 0 -> 1 (рядок 65),SURVIVED,0,KILLED,7
+M19,Constant Replacement (rejected()),rejected(): total 0 -> 1 (рядок 65),SURVIVED,0,KILLED,7
+M20,Constant Replacement (rejected()),rejected(): remainingSeats 0 -> 1 (рядок 65),SURVIVED,0,KILLED,7
+M21,Conditionals Boundary (checkRange),value < minimum  ->  value <= minimum (рядок 69),KILLED,9,KILLED,9
+M22,Conditionals Boundary (checkRange),value > maximum  ->  value >= maximum (рядок 69),KILLED,5,KILLED,5
+M23,Logical Connector (checkRange),||  ->  && (рядок 69),KILLED,6,KILLED,6

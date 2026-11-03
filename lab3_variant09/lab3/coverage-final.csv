@@ -1,0 +1,4 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+EnrollmentService - final coverage,default,EnrollmentService,0,151,0,22,0,34,0,15,0,4
+EnrollmentService - final coverage,default,EnrollmentService.Request,0,15,0,0,0,1,0,1,0,1
+EnrollmentService - final coverage,default,EnrollmentService.Result,0,18,0,0,0,1,0,1,0,1

@@ -1,0 +1,14 @@
+C:\vol\CHNU\labs_3course1\yakisti pz\lab4_variant09\src\main\java\ua\course\delivery\Customer.java
+C:\vol\CHNU\labs_3course1\yakisti pz\lab4_variant09\src\main\java\ua\course\delivery\CustomerRepository.java
+C:\vol\CHNU\labs_3course1\yakisti pz\lab4_variant09\src\main\java\ua\course\delivery\Database.java
+C:\vol\CHNU\labs_3course1\yakisti pz\lab4_variant09\src\main\java\ua\course\delivery\HttpShippingPolicy.java
+C:\vol\CHNU\labs_3course1\yakisti pz\lab4_variant09\src\main\java\ua\course\delivery\Parcel.java
+C:\vol\CHNU\labs_3course1\yakisti pz\lab4_variant09\src\main\java\ua\course\delivery\ParcelRepository.java
+C:\vol\CHNU\labs_3course1\yakisti pz\lab4_variant09\src\main\java\ua\course\delivery\Shipment.java
+C:\vol\CHNU\labs_3course1\yakisti pz\lab4_variant09\src\main\java\ua\course\delivery\ShipmentRejectedException.java
+C:\vol\CHNU\labs_3course1\yakisti pz\lab4_variant09\src\main\java\ua\course\delivery\ShipmentRepository.java
+C:\vol\CHNU\labs_3course1\yakisti pz\lab4_variant09\src\main\java\ua\course\delivery\ShipmentRequest.java
+C:\vol\CHNU\labs_3course1\yakisti pz\lab4_variant09\src\main\java\ua\course\delivery\ShipmentStatus.java
+C:\vol\CHNU\labs_3course1\yakisti pz\lab4_variant09\src\main\java\ua\course\delivery\ShippingPolicy.java
+C:\vol\CHNU\labs_3course1\yakisti pz\lab4_variant09\src\main\java\ua\course\delivery\ShippingService.java
+C:\vol\CHNU\labs_3course1\yakisti pz\lab4_variant09\src\main\java\ua\course\delivery\Sql.java
