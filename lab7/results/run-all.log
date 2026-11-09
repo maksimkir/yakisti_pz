@@ -1,0 +1,12 @@
+### k6 baseline
+done k6 baseline rc=0
+### jmeter baseline
+done jmeter baseline rc=0
+### k6 load
+done k6 load rc=0
+### jmeter load
+done jmeter load rc=0
+### k6 spike
+done k6 spike rc=0
+### jmeter spike
+done jmeter spike rc=0

@@ -1,0 +1,20 @@
+2026-11-09 22:20:36,290 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2026-11-09 22:20:36,317 INFO o.a.j.JMeter: Loading user properties from: C:\Users\Asus\tools\apache-jmeter-5.6.3\bin\user.properties
+2026-11-09 22:20:36,318 INFO o.a.j.JMeter: Loading system properties from: C:\Users\Asus\tools\apache-jmeter-5.6.3\bin\system.properties
+2026-11-09 22:20:36,325 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2026-11-09 22:20:36,325 INFO o.a.j.JMeter: Version 5.6.3
+2026-11-09 22:20:36,325 INFO o.a.j.JMeter: java.version=17.0.18
+2026-11-09 22:20:36,325 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2026-11-09 22:20:36,325 INFO o.a.j.JMeter: os.name=Windows 11
+2026-11-09 22:20:36,326 INFO o.a.j.JMeter: os.arch=amd64
+2026-11-09 22:20:36,326 INFO o.a.j.JMeter: os.version=10.0
+2026-11-09 22:20:36,326 INFO o.a.j.JMeter: file.encoding=Cp1251
+2026-11-09 22:20:36,326 INFO o.a.j.JMeter: java.awt.headless=null
+2026-11-09 22:20:36,326 INFO o.a.j.JMeter: Max memory     =1073741824
+2026-11-09 22:20:36,326 INFO o.a.j.JMeter: Available Processors =12
+2026-11-09 22:20:36,338 INFO o.a.j.JMeter: Default Locale=English (EN)
+2026-11-09 22:20:36,338 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2026-11-09 22:20:36,338 INFO o.a.j.JMeter: JMeterHome=C:\Users\Asus\tools\apache-jmeter-5.6.3
+2026-11-09 22:20:36,338 INFO o.a.j.JMeter: user.dir  =C:\vol\CHNU\labs_3course1\yakisti pz\lab7
+2026-11-09 22:20:36,339 INFO o.a.j.JMeter: PWD       =C:\vol\CHNU\labs_3course1\yakisti pz\lab7
+2026-11-09 22:20:36,341 INFO o.a.j.JMeter: IP: 192.168.0.103 Name: DESKTOP-B1V12L9 FullName: DESKTOP-B1V12L9

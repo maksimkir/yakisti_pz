@@ -1,0 +1,408 @@
+{
+  "k6-baseline": {
+    "requests": 348,
+    "span_s": 60.0,
+    "rps": 5.8,
+    "avg": 6.93,
+    "med": 6.63,
+    "p90": 9.59,
+    "p95": 10.51,
+    "p99": 14.33,
+    "max": 15.58,
+    "err": 0.0,
+    "checks": 1.0,
+    "flows": 58,
+    "flows_per_s": 1.0,
+    "max_vus": 1,
+    "by_endpoint": {
+      "GET /shipments/{id}": {
+        "count": 58,
+        "avg": 3.99,
+        "p95": 6.44
+      },
+      "POST /customers": {
+        "count": 58,
+        "avg": 6.79,
+        "p95": 8.72
+      },
+      "POST /parcels": {
+        "count": 58,
+        "avg": 6.1,
+        "p95": 8.38
+      },
+      "POST /shipments": {
+        "count": 58,
+        "avg": 9.62,
+        "p95": 14.69
+      },
+      "POST /shipments/{id}/cancel": {
+        "count": 58,
+        "avg": 7.46,
+        "p95": 9.9
+      },
+      "POST /shipments/{id}/dispatch": {
+        "count": 58,
+        "avg": 7.64,
+        "p95": 10.57
+      }
+    },
+    "thresholds": {
+      "avg < 50 ms": true,
+      "p95 < 100 ms": true,
+      "POST /shipments p95 < 150 ms": true,
+      "error rate < 1%": true,
+      "checks/assertions > 99%": true
+    }
+  },
+  "jmeter-baseline": {
+    "requests": 336,
+    "span_s": 59.0,
+    "rps": 5.7,
+    "avg": 7.08,
+    "med": 6.0,
+    "p90": 8.0,
+    "p95": 9.0,
+    "p99": 10.65,
+    "max": 140.0,
+    "err": 0.0,
+    "checks": 1.0,
+    "flows": 56,
+    "flows_per_s": 0.9,
+    "max_vus": 1,
+    "by_endpoint": {
+      "GET /shipments/{id}": {
+        "count": 56,
+        "avg": 3.59,
+        "p95": 4.0
+      },
+      "POST /customers": {
+        "count": 56,
+        "avg": 10.89,
+        "p95": 8.0
+      },
+      "POST /parcels": {
+        "count": 56,
+        "avg": 5.62,
+        "p95": 6.0
+      },
+      "POST /shipments": {
+        "count": 56,
+        "avg": 8.61,
+        "p95": 10.0
+      },
+      "POST /shipments/{id}/cancel": {
+        "count": 56,
+        "avg": 6.8,
+        "p95": 8.0
+      },
+      "POST /shipments/{id}/dispatch": {
+        "count": 56,
+        "avg": 6.95,
+        "p95": 8.0
+      }
+    },
+    "thresholds": {
+      "avg < 50 ms": true,
+      "p95 < 100 ms": true,
+      "POST /shipments p95 < 150 ms": true,
+      "error rate < 1%": true,
+      "checks/assertions > 99%": true
+    }
+  },
+  "k6-load": {
+    "requests": 31902,
+    "span_s": 121.0,
+    "rps": 263.7,
+    "avg": 5.96,
+    "med": 5.76,
+    "p90": 9.0,
+    "p95": 10.16,
+    "p99": 13.07,
+    "max": 59.92,
+    "err": 0.0,
+    "checks": 1.0,
+    "flows": 5317,
+    "flows_per_s": 43.9,
+    "max_vus": 50,
+    "by_endpoint": {
+      "GET /shipments/{id}": {
+        "count": 5317,
+        "avg": 2.61,
+        "p95": 4.01
+      },
+      "POST /customers": {
+        "count": 5317,
+        "avg": 5.34,
+        "p95": 7.76
+      },
+      "POST /parcels": {
+        "count": 5317,
+        "avg": 5.39,
+        "p95": 7.73
+      },
+      "POST /shipments": {
+        "count": 5317,
+        "avg": 8.74,
+        "p95": 12.73
+      },
+      "POST /shipments/{id}/cancel": {
+        "count": 5317,
+        "avg": 6.81,
+        "p95": 10.01
+      },
+      "POST /shipments/{id}/dispatch": {
+        "count": 5317,
+        "avg": 6.87,
+        "p95": 9.96
+      }
+    },
+    "thresholds": {
+      "avg < 100 ms": true,
+      "p95 < 200 ms": true,
+      "POST /shipments p95 < 250 ms": true,
+      "error rate < 1%": true,
+      "checks/assertions > 99%": true
+    }
+  },
+  "jmeter-load": {
+    "requests": 31350,
+    "span_s": 119.0,
+    "rps": 263.4,
+    "avg": 6.12,
+    "med": 6.0,
+    "p90": 9.0,
+    "p95": 10.0,
+    "p99": 14.0,
+    "max": 119.0,
+    "err": 0.0,
+    "checks": 1.0,
+    "flows": 5225,
+    "flows_per_s": 43.9,
+    "max_vus": 50,
+    "by_endpoint": {
+      "GET /shipments/{id}": {
+        "count": 5225,
+        "avg": 2.7,
+        "p95": 4.0
+      },
+      "POST /customers": {
+        "count": 5225,
+        "avg": 5.85,
+        "p95": 8.0
+      },
+      "POST /parcels": {
+        "count": 5225,
+        "avg": 5.28,
+        "p95": 7.0
+      },
+      "POST /shipments": {
+        "count": 5225,
+        "avg": 8.88,
+        "p95": 13.0
+      },
+      "POST /shipments/{id}/cancel": {
+        "count": 5225,
+        "avg": 7.0,
+        "p95": 10.0
+      },
+      "POST /shipments/{id}/dispatch": {
+        "count": 5225,
+        "avg": 7.01,
+        "p95": 10.0
+      }
+    },
+    "thresholds": {
+      "avg < 100 ms": true,
+      "p95 < 200 ms": true,
+      "POST /shipments p95 < 250 ms": true,
+      "error rate < 1%": true,
+      "checks/assertions > 99%": true
+    }
+  },
+  "k6-spike": {
+    "requests": 68574,
+    "span_s": 101.0,
+    "rps": 679.0,
+    "avg": 424.6,
+    "med": 499.95,
+    "p90": 778.78,
+    "p95": 869.75,
+    "p99": 1085.65,
+    "max": 2017.93,
+    "err": 0.0,
+    "checks": 1.0,
+    "flows": 11429,
+    "flows_per_s": 113.2,
+    "max_vus": 1000,
+    "by_endpoint": {
+      "GET /shipments/{id}": {
+        "count": 11429,
+        "avg": 391.69,
+        "p95": 800.52
+      },
+      "POST /customers": {
+        "count": 11429,
+        "avg": 398.3,
+        "p95": 819.42
+      },
+      "POST /parcels": {
+        "count": 11429,
+        "avg": 400.83,
+        "p95": 823.74
+      },
+      "POST /shipments": {
+        "count": 11429,
+        "avg": 485.5,
+        "p95": 989.05
+      },
+      "POST /shipments/{id}/cancel": {
+        "count": 11429,
+        "avg": 434.33,
+        "p95": 889.96
+      },
+      "POST /shipments/{id}/dispatch": {
+        "count": 11429,
+        "avg": 436.93,
+        "p95": 892.2
+      }
+    },
+    "thresholds": {
+      "avg < 250 ms": false,
+      "p95 < 500 ms": false,
+      "POST /shipments p95 < 600 ms": false,
+      "error rate < 1%": true,
+      "checks/assertions > 99%": true
+    },
+    "phases": {
+      "до піку (0–30 с)": {
+        "requests": 8652,
+        "span_s": 30.0,
+        "rps": 288.4,
+        "avg": 8.34,
+        "med": 6.42,
+        "p90": 13.17,
+        "p95": 23.18,
+        "p99": 46.42,
+        "max": 151.88,
+        "err": 0.0
+      },
+      "пік (30–70 с)": {
+        "requests": 48215,
+        "span_s": 40.0,
+        "rps": 1205.4,
+        "avg": 562.37,
+        "med": 572.37,
+        "p90": 831.15,
+        "p95": 916.8,
+        "p99": 1140.55,
+        "max": 2017.93,
+        "err": 0.0
+      },
+      "відновлення (70–100 с)": {
+        "requests": 11707,
+        "span_s": 31.0,
+        "rps": 377.6,
+        "avg": 164.82,
+        "med": 7.12,
+        "p90": 541.78,
+        "p95": 626.2,
+        "p99": 806.57,
+        "max": 1453.01,
+        "err": 0.0
+      }
+    }
+  },
+  "jmeter-spike": {
+    "requests": 65602,
+    "span_s": 99.0,
+    "rps": 662.6,
+    "avg": 401.01,
+    "med": 502.0,
+    "p90": 723.0,
+    "p95": 808.0,
+    "p99": 1006.99,
+    "max": 1841.0,
+    "err": 0.0,
+    "checks": 1.0,
+    "flows": 10634,
+    "flows_per_s": 107.4,
+    "max_vus": 1000,
+    "by_endpoint": {
+      "GET /shipments/{id}": {
+        "count": 10847,
+        "avg": 366.03,
+        "p95": 715.0
+      },
+      "POST /customers": {
+        "count": 11249,
+        "avg": 374.83,
+        "p95": 723.0
+      },
+      "POST /parcels": {
+        "count": 11143,
+        "avg": 376.12,
+        "p95": 726.0
+      },
+      "POST /shipments": {
+        "count": 11011,
+        "avg": 464.14,
+        "p95": 932.5
+      },
+      "POST /shipments/{id}/cancel": {
+        "count": 10634,
+        "avg": 413.19,
+        "p95": 822.0
+      },
+      "POST /shipments/{id}/dispatch": {
+        "count": 10718,
+        "avg": 412.83,
+        "p95": 822.0
+      }
+    },
+    "thresholds": {
+      "avg < 250 ms": false,
+      "p95 < 500 ms": false,
+      "POST /shipments p95 < 600 ms": false,
+      "error rate < 1%": true,
+      "checks/assertions > 99%": true
+    },
+    "phases": {
+      "до піку (0–30 с)": {
+        "requests": 8275,
+        "span_s": 30.0,
+        "rps": 275.8,
+        "avg": 11.85,
+        "med": 7.0,
+        "p90": 18.0,
+        "p95": 42.3,
+        "p99": 146.26,
+        "max": 371.0,
+        "err": 0.0
+      },
+      "пік (30–70 с)": {
+        "requests": 49150,
+        "span_s": 40.0,
+        "rps": 1228.8,
+        "avg": 532.13,
+        "med": 552.0,
+        "p90": 751.0,
+        "p95": 837.0,
+        "p99": 1043.0,
+        "max": 1841.0,
+        "err": 0.0
+      },
+      "відновлення (70–100 с)": {
+        "requests": 8177,
+        "span_s": 29.0,
+        "rps": 282.0,
+        "avg": 6.73,
+        "med": 6.0,
+        "p90": 10.0,
+        "p95": 13.0,
+        "p99": 22.0,
+        "max": 52.0,
+        "err": 0.0
+      }
+    }
+  }
+}
