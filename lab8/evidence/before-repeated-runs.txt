@@ -1,0 +1,72 @@
+===== ORIGINAL, повний запуск, seed=1
+ShipmentRegressionIT: tests=10 failures=1 errors=1
+   1. createShipment               PASS
+   2. repeatedCancellation         PASS
+   3. policyRejection              PASS
+   4. delivery                     PASS
+   5. parcelWeight                 PASS
+   6. prematureDelivery            PASS
+   7. parcelValue                  ERROR: PreparedStatementCallback; SQL [INSERT INTO parcels(code,weight_grams,declared_value,fragile) VALUES (?,?,?,?)
+   8. dispatchShipment             PASS
+   9. shipmentAfterPolicyCheck     FAILURE: expected: <1> but was: <0>
+  10. shipmentSelection            PASS
+===== ORIGINAL, повний запуск, seed=2
+ShipmentRegressionIT: tests=10 failures=1 errors=2
+   1. prematureDelivery            PASS
+   2. shipmentAfterPolicyCheck     FAILURE: expected: <1> but was: <0>
+   3. repeatedCancellation         PASS
+   4. shipmentSelection            PASS
+   5. parcelValue                  PASS
+   6. dispatchShipment             ERROR: Некоректний ідентифікатор
+   7. parcelWeight                 ERROR: PreparedStatementCallback; SQL [INSERT INTO parcels(code,weight_grams,declared_value,fragile) VALUES (?,?,?,?)
+   8. policyRejection              PASS
+   9. createShipment               PASS
+  10. delivery                     PASS
+===== ORIGINAL, повний запуск, seed=3
+ShipmentRegressionIT: tests=10 failures=1 errors=1
+   1. createShipment               PASS
+   2. shipmentSelection            PASS
+   3. shipmentAfterPolicyCheck     FAILURE: expected: <1> but was: <0>
+   4. dispatchShipment             PASS
+   5. delivery                     PASS
+   6. policyRejection              PASS
+   7. repeatedCancellation         PASS
+   8. parcelValue                  PASS
+   9. prematureDelivery            PASS
+  10. parcelWeight                 ERROR: PreparedStatementCallback; SQL [INSERT INTO parcels(code,weight_grams,declared_value,fragile) VALUES (?,?,?,?)
+===== ORIGINAL, повний запуск, seed=4
+ShipmentRegressionIT: tests=10 failures=1 errors=1
+   1. shipmentSelection            PASS
+   2. parcelWeight                 PASS
+   3. shipmentAfterPolicyCheck     FAILURE: expected: <1> but was: <0>
+   4. createShipment               PASS
+   5. parcelValue                  ERROR: PreparedStatementCallback; SQL [INSERT INTO parcels(code,weight_grams,declared_value,fragile) VALUES (?,?,?,?)
+   6. dispatchShipment             PASS
+   7. repeatedCancellation         PASS
+   8. delivery                     PASS
+   9. policyRejection              PASS
+  10. prematureDelivery            PASS
+===== ORIGINAL, повний запуск, seed=5
+ShipmentRegressionIT: tests=10 failures=1 errors=2
+   1. dispatchShipment             ERROR: Некоректний ідентифікатор
+   2. parcelWeight                 PASS
+   3. prematureDelivery            PASS
+   4. delivery                     PASS
+   5. shipmentSelection            PASS
+   6. createShipment               PASS
+   7. repeatedCancellation         PASS
+   8. parcelValue                  ERROR: PreparedStatementCallback; SQL [INSERT INTO parcels(code,weight_grams,declared_value,fragile) VALUES (?,?,?,?)
+   9. shipmentAfterPolicyCheck     FAILURE: expected: <1> but was: <0>
+  10. policyRejection              PASS
+===== ORIGINAL, повний запуск, seed=6
+ShipmentRegressionIT: tests=10 failures=1 errors=2
+   1. prematureDelivery            PASS
+   2. delivery                     PASS
+   3. shipmentSelection            PASS
+   4. parcelValue                  PASS
+   5. dispatchShipment             ERROR: Некоректний ідентифікатор
+   6. repeatedCancellation         PASS
+   7. policyRejection              PASS
+   8. parcelWeight                 ERROR: PreparedStatementCallback; SQL [INSERT INTO parcels(code,weight_grams,declared_value,fragile) VALUES (?,?,?,?)
+   9. createShipment               PASS
+  10. shipmentAfterPolicyCheck     FAILURE: expected: <1> but was: <0>

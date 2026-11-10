@@ -1,0 +1,39 @@
+===== AFTER: 10 послідовних повних regression-запусків з різним порядком
+seed=1 exit=0  ShipmentRegressionIT: tests=10 failures=0 errors=0
+    порядок: createShipment repeatedCancellation policyRejection delivery parcelWeight prematureDelivery parcelValue dispatchShipment shipmentAfterPolicyCheck shipmentSelection 
+seed=2 exit=0  ShipmentRegressionIT: tests=10 failures=0 errors=0
+    порядок: prematureDelivery shipmentAfterPolicyCheck repeatedCancellation shipmentSelection parcelValue dispatchShipment parcelWeight policyRejection createShipment delivery 
+seed=3 exit=0  ShipmentRegressionIT: tests=10 failures=0 errors=0
+    порядок: createShipment shipmentSelection shipmentAfterPolicyCheck dispatchShipment delivery policyRejection repeatedCancellation parcelValue prematureDelivery parcelWeight 
+seed=4 exit=0  ShipmentRegressionIT: tests=10 failures=0 errors=0
+    порядок: shipmentSelection parcelWeight shipmentAfterPolicyCheck createShipment parcelValue dispatchShipment repeatedCancellation delivery policyRejection prematureDelivery 
+seed=5 exit=0  ShipmentRegressionIT: tests=10 failures=0 errors=0
+    порядок: dispatchShipment parcelWeight prematureDelivery delivery shipmentSelection createShipment repeatedCancellation parcelValue shipmentAfterPolicyCheck policyRejection 
+seed=6 exit=0  ShipmentRegressionIT: tests=10 failures=0 errors=0
+    порядок: prematureDelivery delivery shipmentSelection parcelValue dispatchShipment repeatedCancellation policyRejection parcelWeight createShipment shipmentAfterPolicyCheck 
+seed=7 exit=0  ShipmentRegressionIT: tests=10 failures=0 errors=0
+    порядок: parcelValue shipmentAfterPolicyCheck repeatedCancellation dispatchShipment policyRejection parcelWeight delivery shipmentSelection prematureDelivery createShipment 
+seed=8 exit=0  ShipmentRegressionIT: tests=10 failures=0 errors=0
+    порядок: shipmentSelection shipmentAfterPolicyCheck prematureDelivery delivery dispatchShipment createShipment parcelValue repeatedCancellation policyRejection parcelWeight 
+seed=9 exit=0  ShipmentRegressionIT: tests=10 failures=0 errors=0
+    порядок: dispatchShipment delivery policyRejection parcelWeight prematureDelivery shipmentSelection parcelValue createShipment shipmentAfterPolicyCheck repeatedCancellation 
+seed=10 exit=0  ShipmentRegressionIT: tests=10 failures=0 errors=0
+    порядок: repeatedCancellation policyRejection delivery parcelValue shipmentAfterPolicyCheck parcelWeight shipmentSelection prematureDelivery createShipment dispatchShipment 
+
+===== AFTER: ізольований запуск кожного тесту
+ізольовано: createShipment               PASS
+ізольовано: dispatchShipment             PASS
+ізольовано: parcelWeight                 PASS
+ізольовано: parcelValue                  PASS
+ізольовано: shipmentAfterPolicyCheck     PASS
+ізольовано: shipmentSelection            PASS
+ізольовано: delivery                     PASS
+ізольовано: prematureDelivery            PASS
+ізольовано: policyRejection              PASS
+ізольовано: repeatedCancellation         PASS
+
+===== AFTER: змінені умови
+policyDelayMs=0: shipmentAfterPolicyCheck     PASS
+policyDelayMs=200: shipmentAfterPolicyCheck     PASS
+policyDelayMs=2000: shipmentAfterPolicyCheck     PASS
+повний suite з reverseFixture=true: ShipmentRegressionIT: tests=10 failures=0 errors=0

@@ -1,0 +1,21 @@
+ізольовано: createShipment               PASS
+ізольовано: dispatchShipment             ERROR: Некоректний ідентифікатор
+ізольовано: parcelWeight                 PASS
+ізольовано: parcelValue                  PASS
+ізольовано: shipmentAfterPolicyCheck     FAILURE: expected: <1> but was: <0>
+ізольовано: shipmentSelection            PASS
+ізольовано: delivery                     PASS
+ізольовано: prematureDelivery            PASS
+ізольовано: policyRejection              PASS
+ізольовано: repeatedCancellation         PASS
+
+===== timing: shipmentAfterPolicyCheck з різною затримкою зовнішньої перевірки (тест чекає фіксовано 50 мс)
+policyDelayMs=0: shipmentAfterPolicyCheck     PASS
+policyDelayMs=10: shipmentAfterPolicyCheck     PASS
+policyDelayMs=40: shipmentAfterPolicyCheck     FAILURE: expected: <1> but was: <0>
+policyDelayMs=60: shipmentAfterPolicyCheck     FAILURE: expected: <1> but was: <0>
+policyDelayMs=200: shipmentAfterPolicyCheck     FAILURE: expected: <1> but was: <0>
+
+===== порядок рядків: shipmentSelection зі зміненим порядком створення фікстур
+reverseFixture=false: shipmentSelection            PASS
+reverseFixture=true: shipmentSelection            FAILURE: expected: <[ac49e5e7-A, ac49e5e7-B]> but was: <[ac49e5e7-B, ac49e5e7-A]>

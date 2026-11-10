@@ -1,0 +1,178 @@
+From 3eccc34373a672cf4d22f743dad3a4732558bdba Mon Sep 17 00:00:00 2001
+From: Kyryliuk Maksym <lab@local>
+Date: Mon, 9 Nov 2026 21:17:02 +0000
+Subject: [PATCH] Fix flaky regression tests: order dependency, dirty data,
+ fixed wait, row order; add smoke subset
+
+---
+ pom.xml                                       | 19 +++++++-
+ .../course/delivery/ShipmentRegressionIT.java | 43 +++++++++++++++----
+ 2 files changed, 52 insertions(+), 10 deletions(-)
+
+diff --git a/pom.xml b/pom.xml
+index 585744d..0df4095 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -31,11 +31,28 @@
+     <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId><version>3.5.2</version></plugin>
+   </plugins></build>
+   <profiles>
++    <!-- Smoke subset: лише тести з тегом "smoke" (швидка перевірка критичного шляху). mvn -Psmoke test -->
++    <profile>
++      <id>smoke</id>
++      <build><plugins><plugin>
++        <groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId>
++        <configuration>
++          <includes><include>**/ShipmentRegressionIT.java</include></includes>
++          <groups>smoke</groups>
++          <rerunFailingTestsCount>0</rerunFailingTestsCount>
++        </configuration>
++      </plugin></plugins></build>
++    </profile>
++    <!-- Повний regression suite: усі тести з тегом "regression" (включно зі smoke). mvn -Pregression test -->
+     <profile>
+       <id>regression</id>
+       <build><plugins><plugin>
+         <groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId>
+-        <configuration><includes><include>**/ShipmentRegressionIT.java</include></includes></configuration>
++        <configuration>
++          <includes><include>**/ShipmentRegressionIT.java</include></includes>
++          <groups>regression</groups>
++          <rerunFailingTestsCount>0</rerunFailingTestsCount>
++        </configuration>
+       </plugin></plugins></build>
+     </profile>
+   </profiles>
+diff --git a/src/test/java/ua/course/delivery/ShipmentRegressionIT.java b/src/test/java/ua/course/delivery/ShipmentRegressionIT.java
+index 69b7692..30ea3ae 100644
+--- a/src/test/java/ua/course/delivery/ShipmentRegressionIT.java
++++ b/src/test/java/ua/course/delivery/ShipmentRegressionIT.java
+@@ -13,10 +13,22 @@ import java.util.UUID;
+ import java.util.concurrent.CompletableFuture;
+ import java.util.concurrent.CompletionException;
+ import java.util.concurrent.Executors;
++import java.util.concurrent.TimeUnit;
+ 
+ import static org.junit.jupiter.api.Assertions.*;
+ 
++/**
++ * Regression suite SUT B (variant09). Smoke subset — тести з тегом "smoke" (@Tag), повний regression — усі тести класу (тег "regression"),
++ * тобто smoke є підмножиною regression. Порядок методів навмисно випадковий: тести мають бути незалежними.
++ *
++ * Виправлені проблеми стабільності (див. lab8/REPORT):
++ *  1. order dependency    — dispatchShipment використовував static shipmentId, створений іншим тестом;
++ *  2. shared/dirty data   — parcelWeight і parcelValue створювали посилку з однаковим UNIQUE-кодом;
++ *  3. fixed wait          — shipmentAfterPolicyCheck чекав Thread.sleep(50) замість завершення операції;
++ *  4. порядок рядків      — shipmentSelection порівнював результат SELECT без ORDER BY з очікуваним порядком.
++ */
+ @Testcontainers
++@Tag("regression")
+ @TestMethodOrder(MethodOrderer.Random.class)
+ class ShipmentRegressionIT {
+     @Container
+@@ -27,7 +39,6 @@ class ShipmentRegressionIT {
+     static ParcelRepository parcels;
+     static ShipmentRepository shipments;
+     static ShippingService service;
+-    static long shipmentId;
+ 
+     @BeforeAll
+     static void prepareDatabase() {
+@@ -50,7 +61,12 @@ class ShipmentRegressionIT {
+     }
+ 
+     private Parcel parcel() throws Exception {
+-        return parcels.create(new Parcel(0, UUID.randomUUID().toString(), 1000, 0, false));
++        return parcel(1000, 0);
++    }
++
++    // Кожен тест створює власну посилку з унікальним кодом — жодних спільних фікстур між тестами
++    private Parcel parcel(int weightGrams, long declaredValue) throws Exception {
++        return parcels.create(new Parcel(0, "P-" + UUID.randomUUID(), weightGrams, declaredValue, false));
+     }
+ 
+     private ShipmentRequest request(Customer customer, Parcel parcel, boolean coupon) {
+@@ -58,33 +74,36 @@ class ShipmentRegressionIT {
+     }
+ 
+     @Test
++    @Tag("smoke")
+     @DisplayName("Відправлення зберігається у БД")
+     void createShipment() throws Exception {
+         var saved = service.createShipment(request(customer(false), parcel(), false));
+-        shipmentId = saved.id();
+         assertEquals(saved, shipments.findById(saved.id()));
+         assertEquals(ShipmentStatus.Registered, saved.status());
+     }
+ 
+     @Test
++    @Tag("smoke")
+     @DisplayName("Передача відправлення в доставку")
+     void dispatchShipment() throws Exception {
+-        var saved = service.dispatch(shipmentId);
++        // Виправлення order dependency: тест сам готує власне відправлення (Arrange), а не бере id з іншого тесту
++        var created = service.createShipment(request(customer(false), parcel(), false));
++        var saved = service.dispatch(created.id());
+         assertEquals(ShipmentStatus.Dispatched, saved.status());
+-        assertEquals(saved, shipments.findById(shipmentId));
++        assertEquals(saved, shipments.findById(created.id()));
+     }
+ 
+     @Test
+     @DisplayName("Картка посилки зберігає вагу")
+     void parcelWeight() throws Exception {
+-        var saved = parcels.create(new Parcel(0, "REGRESSION-PARCEL", 1000, 0, false));
++        var saved = parcel(1000, 0); // було: фіксований код "REGRESSION-PARCEL", спільний з parcelValue
+         assertEquals(1000, parcels.findById(saved.id()).weightGrams());
+     }
+ 
+     @Test
+     @DisplayName("Картка посилки зберігає оголошену вартість")
+     void parcelValue() throws Exception {
+-        var saved = parcels.create(new Parcel(0, "REGRESSION-PARCEL", 2000, 10000, false));
++        var saved = parcel(2000, 10000); // було: той самий код "REGRESSION-PARCEL" -> порушення UNIQUE
+         assertEquals(10000, parcels.findById(saved.id()).declaredValue());
+     }
+ 
+@@ -110,11 +129,14 @@ class ShipmentRegressionIT {
+                     throw new CompletionException(exception);
+                 }
+             }, executor);
+-            Thread.sleep(50);
++            // Виправлення fixed wait: замість Thread.sleep(50) чекаємо на умову — завершення операції
++            // (з верхньою межею, щоб тест не зависав назавжди, якщо операція зламається)
++            var created = operation.get(10, TimeUnit.SECONDS);
+             var saved = shipments.findShipments(customer.id(), ShipmentStatus.Registered);
+             assertEquals(1, saved.size());
+             assertEquals(request.reference(), saved.getFirst().reference());
+             assertEquals(7000, saved.getFirst().total());
++            assertEquals(created.id(), saved.getFirst().id());
+         }
+     }
+ 
+@@ -128,11 +150,13 @@ class ShipmentRegressionIT {
+         for (String reference : fixtureOrder) {
+             service.createShipment(new ShipmentRequest(reference, customer.id(), parcel().id(), 100, false, false, false));
+         }
+-        var actual = jdbc.queryForList("SELECT reference FROM shipments WHERE customer_id=?", String.class, customer.id());
++        // Виправлення: SQL не гарантує порядок рядків без ORDER BY — задаємо порядок явно
++        var actual = jdbc.queryForList("SELECT reference FROM shipments WHERE customer_id=? ORDER BY reference", String.class, customer.id());
+         assertEquals(references, actual);
+     }
+ 
+     @Test
++    @Tag("smoke")
+     @DisplayName("Завершення доставки зберігає стан")
+     void delivery() throws Exception {
+         var saved = service.createShipment(request(customer(false), parcel(), false));
+@@ -161,6 +185,7 @@ class ShipmentRegressionIT {
+     }
+ 
+     @Test
++    @Tag("smoke")
+     @DisplayName("Повторне скасування не змінює відправлення")
+     void repeatedCancellation() throws Exception {
+         var saved = service.createShipment(request(customer(false), parcel(), false));
+-- 
+2.43.0
+
